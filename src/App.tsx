@@ -1,7 +1,13 @@
 import React from 'react'
+import { AddTodo, Filter, Todos } from './components'
 
-function App() {
-  return <div className="App"></div>
+export function App() {
+  return (
+    <div className="app">
+      <h1>Todos</h1>
+      <AddTodo />
+      <Filter />
+      <Todos />
+    </div>
+  )
 }
-
-export default App
