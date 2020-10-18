@@ -9,4 +9,7 @@ module.exports = {
     '@snowpack/plugin-typescript',
     '@snowpack/plugin-sass',
   ],
+  alias: {
+    "app": "./src"
+  }
 }
