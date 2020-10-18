@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
-import type { StoreState } from 'app/store'
+import type { AppState } from 'app/store'
 import { Filter, Todo } from 'app/types'
 import { toggleTodo } from 'app/store/todos/actions'
 
@@ -50,7 +50,7 @@ function getFilteredTodos(todos: Array<Todo>, filter: Filter): Array<Todo> {
   }
 }
 
-function mapState(state: StoreState) {
+function mapState(state: AppState) {
   return {
     activeFilter: state.activeFilter,
     todos: state.todos,

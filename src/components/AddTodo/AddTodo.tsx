@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators, Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import type { StoreState } from 'app/store'
+import type { AppState } from 'app/store'
 import { addTodo } from 'app/store/todos/actions'
 
 type DispatchProps = {
@@ -39,7 +39,7 @@ function AddTodo(props: Props) {
   )
 }
 
-function mapState(state: StoreState) {
+function mapState(state: AppState) {
   return {
     todos: state.todos,
   }

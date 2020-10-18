@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators, Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { Filter } from 'app/types'
-import type { StoreState } from 'app/store'
+import type { AppState } from 'app/store'
 import { setActiveFilter } from 'app/store/activeFilter/actions'
 
 type StateProps = {
@@ -34,7 +34,7 @@ function FilterSelect(props: Props) {
   )
 }
 
-function mapState(state: StoreState) {
+function mapState(state: AppState) {
   return {
     activeFilter: state.activeFilter,
     todos: state.todos,

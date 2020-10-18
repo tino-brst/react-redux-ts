@@ -15,4 +15,4 @@ const storeEnhancer = composeWithDevTools(applyMiddleware(...middleware))
 
 export const store = createStore(rootReducer, storeEnhancer)
 
-export type StoreState = ReturnType<typeof rootReducer>
+export type AppState = ReturnType<typeof rootReducer>
