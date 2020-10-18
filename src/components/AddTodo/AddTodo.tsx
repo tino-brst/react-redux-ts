@@ -12,6 +12,7 @@ type Props = DispatchProps
 
 function AddTodo(props: Props) {
   const [inputValue, setInputValue] = React.useState('')
+  const isValidInput = inputValue.trim() !== ''
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     setInputValue(event.target.value)
@@ -19,8 +20,10 @@ function AddTodo(props: Props) {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    props.addTodo(inputValue)
-    setInputValue('')
+    if (isValidInput) {
+      props.addTodo(inputValue)
+      setInputValue('')
+    }
   }
 
   return (
@@ -31,7 +34,7 @@ function AddTodo(props: Props) {
         value={inputValue}
         onChange={handleInputChange}
       />
-      <input type="submit" value="Add" />
+      <input type="submit" value="Add" disabled={!isValidInput} />
     </form>
   )
 }
