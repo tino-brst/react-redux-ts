@@ -1,5 +1,5 @@
 import type { Reducer } from 'redux'
-import type { Todo } from 'src/types'
+import type { Todo } from 'app/types'
 import { TodosAction, TodosActionType, TodosState } from './types'
 
 const initialState: TodosState = []
