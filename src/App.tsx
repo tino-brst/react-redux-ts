@@ -1,12 +1,12 @@
 import React from 'react'
-import { AddTodo, Filter, Todos } from './components'
+import { AddTodo, FilterSelect, Todos } from 'app/components'
 
 export function App() {
   return (
     <div className="app">
       <h1>Todos</h1>
       <AddTodo />
-      <Filter />
+      <FilterSelect />
       <Todos />
     </div>
   )

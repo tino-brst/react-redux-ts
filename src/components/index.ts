@@ -1,3 +1,3 @@
 export * from './AddTodo/AddTodo'
-export * from './Filter/Filter'
+export * from './FilterSelect/FilterSelect'
 export * from './Todos/Todos'
