@@ -2,26 +2,27 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
 import type { StoreState } from 'app/store'
-import type { Todo } from 'app/types'
+import { Filter, Todo } from 'app/types'
 import { toggleTodo } from 'app/store/todos/actions'
 
 type StateProps = {
   todos: Array<Todo>
+  activeFilter: Filter
 }
 
 type DispatchProps = {
   toggleTodo: (id: string) => void
 }
 
-type OwnProps = {}
-
-type Props = StateProps & DispatchProps & OwnProps
+type Props = StateProps & DispatchProps
 
 function Todos(props: Props) {
+  const filteredTodos = getFilteredTodos(props.todos, props.activeFilter)
+
   return (
     <div>
       <ul>
-        {props.todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <li key={todo.id}>
             <label>
               <input
@@ -38,8 +39,20 @@ function Todos(props: Props) {
   )
 }
 
+function getFilteredTodos(todos: Array<Todo>, filter: Filter): Array<Todo> {
+  switch (filter) {
+    case Filter.all:
+      return todos
+    case Filter.complete:
+      return todos.filter((todo) => todo.completed)
+    case Filter.incomplete:
+      return todos.filter((todo) => !todo.completed)
+  }
+}
+
 function mapState(state: StoreState) {
   return {
+    activeFilter: state.activeFilter,
     todos: state.todos,
   }
 }

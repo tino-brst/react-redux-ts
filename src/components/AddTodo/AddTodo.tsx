@@ -35,6 +35,7 @@ function AddTodo(props: Props) {
     </form>
   )
 }
+
 function mapState(state: StoreState) {
   return {
     todos: state.todos,
