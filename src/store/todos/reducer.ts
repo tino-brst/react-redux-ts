@@ -1,8 +1,11 @@
 import type { Reducer } from 'redux'
-import type { Todo } from 'app/types'
 import { TodosAction, TodosActionType, TodosState } from './types'
 
-const initialState: TodosState = []
+const initialState: TodosState = {
+  items: [],
+  isLoading: false,
+  isError: false,
+}
 
 export const todosReducer: Reducer<TodosState, TodosAction> = (
   state = initialState,
@@ -10,17 +13,41 @@ export const todosReducer: Reducer<TodosState, TodosAction> = (
 ) => {
   switch (action.type) {
     case TodosActionType.add:
-      const newTodo: Todo = {
-        id: (Math.random() * 1000000).toFixed(0),
-        title: action.payload,
-        completed: false,
+      return {
+        ...state,
+        items: state.items.concat({
+          id: (Math.random() * 1000000).toFixed(0),
+          title: action.payload,
+          completed: false,
+        }),
       }
-      return [...state, newTodo]
     case TodosActionType.toggle:
-      const todoId = action.payload
-      return state.map((todo) =>
-        todo.id === todoId ? { ...todo, completed: !todo.completed } : todo,
-      )
+      return {
+        ...state,
+        items: state.items.map((todo) =>
+          todo.id === action.payload
+            ? { ...todo, completed: !todo.completed }
+            : todo,
+        ),
+      }
+    case TodosActionType.loadStart:
+      return {
+        ...state,
+        isLoading: true,
+      }
+    case TodosActionType.loadSuccess:
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        items: action.payload,
+      }
+    case TodosActionType.loadFailure:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      }
     default:
       return state
   }

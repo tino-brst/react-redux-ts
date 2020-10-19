@@ -53,7 +53,7 @@ function getFilteredTodos(todos: Array<Todo>, filter: Filter): Array<Todo> {
 function mapState(state: AppState) {
   return {
     activeFilter: state.activeFilter,
-    todos: state.todos,
+    todos: state.todos.items,
   }
 }
 
