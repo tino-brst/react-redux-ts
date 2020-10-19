@@ -1,3 +1,4 @@
+import { getUniqueId } from 'app/utils'
 import type { Reducer } from 'redux'
 import { TodosAction, TodosActionType, TodosState } from './types'
 
@@ -16,7 +17,7 @@ export const todosReducer: Reducer<TodosState, TodosAction> = (
       return {
         ...state,
         items: state.items.concat({
-          id: (Math.random() * 1000000).toFixed(0),
+          id: getUniqueId(),
           title: action.payload,
           completed: false,
         }),

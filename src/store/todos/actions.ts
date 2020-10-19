@@ -1,4 +1,5 @@
 import type { Todo } from 'app/types'
+import { request } from 'app/utils'
 import type { AppThunkAction } from '..'
 import { TodosAction, TodosActionType } from './types'
 
@@ -39,9 +40,8 @@ export function loadTodos(): AppThunkAction {
   return async (dispatch) => {
     dispatch(loadTodosStart())
     try {
-      const response = await fetch('http://jsonplaceholder.typicode.com/todos')
-      const data = await response.json()
-      dispatch(loadTodosSuccess(data))
+      const todos = await request('/todos')
+      dispatch(loadTodosSuccess(todos))
     } catch {
       dispatch(loadTodosFailure())
     }
