@@ -3,12 +3,17 @@ import { bindActionCreators, Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { AddTodo, FilterSelect, Todos } from 'app/components'
 import { loadTodos } from 'app/store/todos/actions'
+import type { AppState } from './store'
+
+type StateProps = {
+  isLoading: boolean
+}
 
 type DispatchProps = {
   loadTodos: () => void
 }
 
-type Props = DispatchProps
+type Props = DispatchProps & StateProps
 
 function App(props: Props) {
   React.useEffect(() => {
@@ -20,9 +25,15 @@ function App(props: Props) {
       <h1>Todos</h1>
       <AddTodo />
       <FilterSelect />
-      <Todos />
+      {props.isLoading ? 'Loading ...' : <Todos />}
     </div>
   )
+}
+
+function mapState(state: AppState) {
+  return {
+    isLoading: state.todos.isLoading,
+  }
 }
 
 function mapDispatch(dispatch: Dispatch) {
@@ -34,6 +45,6 @@ function mapDispatch(dispatch: Dispatch) {
   )
 }
 
-const ConnectedApp = connect(null, mapDispatch)(App)
+const ConnectedApp = connect(mapState, mapDispatch)(App)
 
 export { ConnectedApp as App }
