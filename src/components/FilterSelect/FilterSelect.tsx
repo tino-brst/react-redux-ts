@@ -21,10 +21,14 @@ function FilterSelect(props: Props) {
   }
 
   return (
-    <div>
+    <div className="filter-select">
       <label>
         Show
-        <select value={props.activeFilter} onChange={handleSelectChange}>
+        <select
+          className="filter-select__select"
+          value={props.activeFilter}
+          onChange={handleSelectChange}
+        >
           <option value={Filter.all}>All</option>
           <option value={Filter.complete}>Complete</option>
           <option value={Filter.incomplete}>Incomplete</option>

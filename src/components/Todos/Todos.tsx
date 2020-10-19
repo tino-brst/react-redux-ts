@@ -20,22 +20,21 @@ function Todos(props: Props) {
   const filteredTodos = getFilteredTodos(props.todos, props.activeFilter)
 
   return (
-    <div>
-      <ul>
-        {filteredTodos.map((todo) => (
-          <li key={todo.id}>
-            <label>
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => props.toggleTodo(todo.id)}
-              />
-              {todo.title}
-            </label>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="todos">
+      {filteredTodos.map((todo) => (
+        <li className="todos__item" key={todo.id}>
+          <label>
+            <input
+              className="todos__item-checkbox"
+              type="checkbox"
+              checked={todo.completed}
+              onChange={() => props.toggleTodo(todo.id)}
+            />
+            {todo.title}
+          </label>
+        </li>
+      ))}
+    </ul>
   )
 }
 

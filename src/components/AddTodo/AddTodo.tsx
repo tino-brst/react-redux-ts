@@ -27,8 +27,9 @@ function AddTodo(props: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="add-todo" onSubmit={handleSubmit}>
       <input
+        className="add-todo__input"
         type="text"
         placeholder="new todo"
         value={inputValue}
