@@ -36,13 +36,13 @@ function AddTodo(props: Props) {
   )
 }
 
-function mapState(state: AppState) {
+function mapStateToProps(state: AppState) {
   return {
     todos: state.todos,
   }
 }
 
-function mapDispatch(dispatch: Dispatch) {
+function mapDispatchToProps(dispatch: Dispatch) {
   return bindActionCreators(
     {
       addTodo,
@@ -51,7 +51,7 @@ function mapDispatch(dispatch: Dispatch) {
   )
 }
 
-const connector = connect(mapState, mapDispatch)
+const connector = connect(mapStateToProps, mapDispatchToProps)
 const ConnectedAddTodo = connector(AddTodo)
 
 export { ConnectedAddTodo as AddTodo }

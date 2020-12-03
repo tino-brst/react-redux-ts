@@ -22,13 +22,13 @@ function App(props: Props) {
   )
 }
 
-function mapState(state: AppState) {
+function mapStateToProps(state: AppState) {
   return {
     isLoading: state.todos.isLoading,
   }
 }
 
-function mapDispatch(dispatch: Dispatch) {
+function mapDispatchToProps(dispatch: Dispatch) {
   return bindActionCreators(
     {
       loadTodos,
@@ -37,7 +37,7 @@ function mapDispatch(dispatch: Dispatch) {
   )
 }
 
-const connector = connect(mapState, mapDispatch)
+const connector = connect(mapStateToProps, mapDispatchToProps)
 const ConnectedApp = connector(App)
 
 export { ConnectedApp as App }

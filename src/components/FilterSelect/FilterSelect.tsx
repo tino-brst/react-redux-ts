@@ -30,14 +30,14 @@ function FilterSelect(props: Props) {
   )
 }
 
-function mapState(state: AppState) {
+function mapStateToProps(state: AppState) {
   return {
     activeFilter: state.activeFilter,
     todos: state.todos,
   }
 }
 
-function mapDispatch(dispatch: Dispatch) {
+function mapDispatchToProps(dispatch: Dispatch) {
   return bindActionCreators(
     {
       setActiveFilter,
@@ -46,7 +46,7 @@ function mapDispatch(dispatch: Dispatch) {
   )
 }
 
-const connector = connect(mapState, mapDispatch)
+const connector = connect(mapStateToProps, mapDispatchToProps)
 const ConnectedFilterSelect = connector(FilterSelect)
 
 export { ConnectedFilterSelect as FilterSelect }

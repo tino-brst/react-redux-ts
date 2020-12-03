@@ -40,14 +40,14 @@ function getFilteredTodos(todos: Array<Todo>, filter: Filter): Array<Todo> {
   }
 }
 
-function mapState(state: AppState) {
+function mapStateToProps(state: AppState) {
   return {
     activeFilter: state.activeFilter,
     todos: state.todos.items,
   }
 }
 
-function mapDispatch(dispatch: Dispatch) {
+function mapDispatchToProps(dispatch: Dispatch) {
   return bindActionCreators(
     {
       toggleTodo,
@@ -56,7 +56,7 @@ function mapDispatch(dispatch: Dispatch) {
   )
 }
 
-const connector = connect(mapState, mapDispatch)
+const connector = connect(mapStateToProps, mapDispatchToProps)
 const ConnectedTodos = connector(Todos)
 
 export { ConnectedTodos as Todos }
