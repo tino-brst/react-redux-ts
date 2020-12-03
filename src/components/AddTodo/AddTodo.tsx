@@ -1,5 +1,4 @@
 import React from 'react'
-import { bindActionCreators, Dispatch } from 'redux'
 import { connect, ConnectedProps } from 'react-redux'
 import type { AppState } from 'app/store'
 import { addTodo } from 'app/store/todos/actions'
@@ -42,13 +41,8 @@ function mapStateToProps(state: AppState) {
   }
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
-  return bindActionCreators(
-    {
-      addTodo,
-    },
-    dispatch,
-  )
+const mapDispatchToProps = {
+  addTodo,
 }
 
 const connector = connect(mapStateToProps, mapDispatchToProps)

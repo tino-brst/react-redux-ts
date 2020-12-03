@@ -1,5 +1,4 @@
 import React from 'react'
-import { bindActionCreators, Dispatch } from 'redux'
 import { connect, ConnectedProps } from 'react-redux'
 import { AddTodo, FilterSelect, Todos } from 'app/components'
 import { loadTodos } from 'app/store/todos/actions'
@@ -28,13 +27,8 @@ function mapStateToProps(state: AppState) {
   }
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
-  return bindActionCreators(
-    {
-      loadTodos,
-    },
-    dispatch,
-  )
+const mapDispatchToProps = {
+  loadTodos,
 }
 
 const connector = connect(mapStateToProps, mapDispatchToProps)

@@ -1,5 +1,4 @@
 import React from 'react'
-import { bindActionCreators, Dispatch } from 'redux'
 import { connect, ConnectedProps } from 'react-redux'
 import { Filter } from 'app/types'
 import type { AppState } from 'app/store'
@@ -37,13 +36,8 @@ function mapStateToProps(state: AppState) {
   }
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
-  return bindActionCreators(
-    {
-      setActiveFilter,
-    },
-    dispatch,
-  )
+const mapDispatchToProps = {
+  setActiveFilter,
 }
 
 const connector = connect(mapStateToProps, mapDispatchToProps)
