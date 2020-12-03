@@ -1,20 +1,11 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect, ConnectedProps } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
 import type { AppState } from 'app/store'
 import { Filter, Todo } from 'app/types'
 import { toggleTodo } from 'app/store/todos/actions'
 
-type StateProps = {
-  todos: Array<Todo>
-  activeFilter: Filter
-}
-
-type DispatchProps = {
-  toggleTodo: (id: string) => void
-}
-
-type Props = StateProps & DispatchProps
+type Props = ConnectedProps<typeof connector>
 
 function Todos(props: Props) {
   const filteredTodos = getFilteredTodos(props.todos, props.activeFilter)
@@ -65,6 +56,7 @@ function mapDispatch(dispatch: Dispatch) {
   )
 }
 
-const ConnectedTodos = connect(mapState, mapDispatch)(Todos)
+const connector = connect(mapState, mapDispatch)
+const ConnectedTodos = connector(Todos)
 
 export { ConnectedTodos as Todos }

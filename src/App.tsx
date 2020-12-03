@@ -1,19 +1,11 @@
 import React from 'react'
 import { bindActionCreators, Dispatch } from 'redux'
-import { connect } from 'react-redux'
+import { connect, ConnectedProps } from 'react-redux'
 import { AddTodo, FilterSelect, Todos } from 'app/components'
 import { loadTodos } from 'app/store/todos/actions'
 import type { AppState } from './store'
 
-type StateProps = {
-  isLoading: boolean
-}
-
-type DispatchProps = {
-  loadTodos: () => void
-}
-
-type Props = DispatchProps & StateProps
+type Props = ConnectedProps<typeof connector>
 
 function App(props: Props) {
   React.useEffect(() => {
@@ -45,6 +37,7 @@ function mapDispatch(dispatch: Dispatch) {
   )
 }
 
-const ConnectedApp = connect(mapState, mapDispatch)(App)
+const connector = connect(mapState, mapDispatch)
+const ConnectedApp = connector(App)
 
 export { ConnectedApp as App }

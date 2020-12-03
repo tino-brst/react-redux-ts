@@ -1,19 +1,11 @@
 import React from 'react'
 import { bindActionCreators, Dispatch } from 'redux'
-import { connect } from 'react-redux'
+import { connect, ConnectedProps } from 'react-redux'
 import { Filter } from 'app/types'
 import type { AppState } from 'app/store'
 import { setActiveFilter } from 'app/store/activeFilter/actions'
 
-type StateProps = {
-  activeFilter: Filter
-}
-
-type DispatchProps = {
-  setActiveFilter: (value: Filter) => void
-}
-
-type Props = StateProps & DispatchProps
+type Props = ConnectedProps<typeof connector>
 
 function FilterSelect(props: Props) {
   function handleSelectChange(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -54,6 +46,7 @@ function mapDispatch(dispatch: Dispatch) {
   )
 }
 
-const ConnectedFilterSelect = connect(mapState, mapDispatch)(FilterSelect)
+const connector = connect(mapState, mapDispatch)
+const ConnectedFilterSelect = connector(FilterSelect)
 
 export { ConnectedFilterSelect as FilterSelect }

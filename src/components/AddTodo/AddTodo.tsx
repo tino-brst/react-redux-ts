@@ -1,14 +1,10 @@
 import React from 'react'
 import { bindActionCreators, Dispatch } from 'redux'
-import { connect } from 'react-redux'
+import { connect, ConnectedProps } from 'react-redux'
 import type { AppState } from 'app/store'
 import { addTodo } from 'app/store/todos/actions'
 
-type DispatchProps = {
-  addTodo: (title: string) => void
-}
-
-type Props = DispatchProps
+type Props = ConnectedProps<typeof connector>
 
 function AddTodo(props: Props) {
   const [inputValue, setInputValue] = React.useState('')
@@ -55,6 +51,7 @@ function mapDispatch(dispatch: Dispatch) {
   )
 }
 
-const ConnectedAddTodo = connect(mapState, mapDispatch)(AddTodo)
+const connector = connect(mapState, mapDispatch)
+const ConnectedAddTodo = connector(AddTodo)
 
 export { ConnectedAddTodo as AddTodo }
