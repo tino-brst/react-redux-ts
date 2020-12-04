@@ -1,4 +1,8 @@
-# New Project
+# Exploring Redux & Redux-Toolkit
+
+Basic React app built to explore the usage of [Redux](https://redux.js.org) (and [Redux-Toolkit](https://redux-toolkit.js.org)) with TypeScript. The `main` branch implements state management using vanilla Redux, and the `redux-toolkit` branch switches to Redux-Toolkit, making easier the comparison between both approaches.
+
+![screenshot](./docs/screenshot.png)
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
