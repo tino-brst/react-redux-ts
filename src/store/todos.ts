@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { getUniqueId, request } from 'app/utils'
 import type { Todo } from 'app/types'
-import type { AppThunkAction } from '..'
+import type { AppThunkAction } from './'
 
 type TodosState = {
   items: Array<Todo>
