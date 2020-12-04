@@ -13,7 +13,7 @@ export const todosReducer: Reducer<TodosState, TodosAction> = (
   action,
 ) => {
   switch (action.type) {
-    case TodosActionType.add:
+    case TodosActionType.addTodo:
       return {
         ...state,
         items: state.items.concat({
@@ -22,7 +22,7 @@ export const todosReducer: Reducer<TodosState, TodosAction> = (
           completed: false,
         }),
       }
-    case TodosActionType.toggle:
+    case TodosActionType.toggleTodo:
       return {
         ...state,
         items: state.items.map((todo) =>
@@ -31,19 +31,19 @@ export const todosReducer: Reducer<TodosState, TodosAction> = (
             : todo,
         ),
       }
-    case TodosActionType.loadStart:
+    case TodosActionType.loadTodosStart:
       return {
         ...state,
         isLoading: true,
       }
-    case TodosActionType.loadSuccess:
+    case TodosActionType.loadTodosSuccess:
       return {
         ...state,
         isLoading: false,
         isError: false,
         items: action.payload,
       }
-    case TodosActionType.loadFailure:
+    case TodosActionType.loadTodosFailure:
       return {
         ...state,
         isLoading: false,

@@ -5,34 +5,34 @@ import { TodosAction, TodosActionType } from './types'
 
 export function addTodo(title: string): TodosAction {
   return {
-    type: TodosActionType.add,
+    type: TodosActionType.addTodo,
     payload: title,
   }
 }
 
 export function toggleTodo(id: string): TodosAction {
   return {
-    type: TodosActionType.toggle,
+    type: TodosActionType.toggleTodo,
     payload: id,
   }
 }
 
 function loadTodosStart(): TodosAction {
   return {
-    type: TodosActionType.loadStart,
+    type: TodosActionType.loadTodosStart,
   }
 }
 
 function loadTodosSuccess(todos: Array<Todo>): TodosAction {
   return {
-    type: TodosActionType.loadSuccess,
+    type: TodosActionType.loadTodosSuccess,
     payload: todos,
   }
 }
 
 function loadTodosFailure(): TodosAction {
   return {
-    type: TodosActionType.loadFailure,
+    type: TodosActionType.loadTodosFailure,
   }
 }
 

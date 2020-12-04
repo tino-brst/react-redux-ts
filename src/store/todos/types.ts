@@ -12,30 +12,30 @@ export type TodosState = {
 // Action Types
 
 export enum TodosActionType {
-  add = 'todos/add',
-  toggle = 'todos/toggle',
-  loadStart = 'todos/loadStart',
-  loadSuccess = 'todos/loadSuccess',
-  loadFailure = 'todos/loadFailure',
+  addTodo = 'todos/addTodo',
+  toggleTodo = 'todos/toggleTodo',
+  loadTodosStart = 'todos/loadTodosStart',
+  loadTodosSuccess = 'todos/loadTodosSuccess',
+  loadTodosFailure = 'todos/loadTodosFailure',
 }
 
 // Actions
 
-type AddAction = Action<TodosActionType.add> & {
+type AddAction = Action<TodosActionType.addTodo> & {
   payload: string
 }
 
-type ToggleAction = Action<TodosActionType.toggle> & {
+type ToggleAction = Action<TodosActionType.toggleTodo> & {
   payload: string
 }
 
-type LoadStartAction = Action<TodosActionType.loadStart>
+type LoadStartAction = Action<TodosActionType.loadTodosStart>
 
-type LoadSuccessAction = Action<TodosActionType.loadSuccess> & {
+type LoadSuccessAction = Action<TodosActionType.loadTodosSuccess> & {
   payload: Array<Todo>
 }
 
-type LoadFailureAction = Action<TodosActionType.loadFailure>
+type LoadFailureAction = Action<TodosActionType.loadTodosFailure>
 
 export type TodosAction =
   | AddAction
