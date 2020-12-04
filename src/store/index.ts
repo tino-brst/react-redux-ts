@@ -1,18 +1,15 @@
-import { Action, applyMiddleware, combineReducers, createStore } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import thunk, { ThunkAction } from 'redux-thunk'
+import { Action, combineReducers } from 'redux'
+import type { ThunkAction } from 'redux-thunk'
 import { todosReducer } from './todos'
 import { activeFilterReducer } from './activeFilter'
+import { configureStore } from '@reduxjs/toolkit'
 
 const rootReducer = combineReducers({
   todos: todosReducer,
   activeFilter: activeFilterReducer,
 })
 
-const middleware = [thunk]
-const storeEnhancer = composeWithDevTools(applyMiddleware(...middleware))
-
-export const store = createStore(rootReducer, storeEnhancer)
+export const store = configureStore({ reducer: rootReducer })
 
 export type AppState = ReturnType<typeof rootReducer>
 export type AppAction = Action<string>
