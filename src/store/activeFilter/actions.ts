@@ -3,7 +3,7 @@ import { ActiveFilterAction, ActiveFilterActionType } from './types'
 
 export function setActiveFilter(value: Filter): ActiveFilterAction {
   return {
-    type: ActiveFilterActionType.set,
+    type: ActiveFilterActionType.setActiveFilter,
     payload: value,
   }
 }

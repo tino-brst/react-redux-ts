@@ -13,7 +13,7 @@ export const activeFilterReducer: Reducer<
   ActiveFilterAction
 > = (state = initialState, action) => {
   switch (action.type) {
-    case ActiveFilterActionType.set:
+    case ActiveFilterActionType.setActiveFilter:
       return action.payload
     default:
       return state

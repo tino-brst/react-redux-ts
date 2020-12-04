@@ -8,12 +8,12 @@ export type ActiveFilterState = Filter
 // Action Types
 
 export enum ActiveFilterActionType {
-  set = 'activeFilter/set',
+  setActiveFilter = 'activeFilter/setActiveFilter',
 }
 
 // Actions
 
-type SetAction = Action<ActiveFilterActionType.set> & {
+type SetAction = Action<ActiveFilterActionType.setActiveFilter> & {
   payload: Filter
 }
 
