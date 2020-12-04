@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Filter } from 'app/types'
-import type { ActiveFilterState } from './types'
 
-const initialState: ActiveFilterState = Filter.all as Filter
+export type ActiveFilterState = Filter
+
+const initialState = Filter.all as ActiveFilterState
 
 const activeFilterSlice = createSlice({
   name: 'activeFilter',
