@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { AddTodo, FilterSelect, Todos } from 'app/components'
-import { loadTodos } from 'app/store/todos/actions'
+import { loadTodos } from 'app/store/todos'
 import type { AppState } from './store'
 
 type Props = ConnectedProps<typeof connector>

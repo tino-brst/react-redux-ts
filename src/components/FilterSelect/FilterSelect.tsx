@@ -2,7 +2,7 @@ import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { Filter } from 'app/types'
 import type { AppState } from 'app/store'
-import { setActiveFilter } from 'app/store/activeFilter/actions'
+import { setActiveFilter } from 'app/store/activeFilter'
 
 type Props = ConnectedProps<typeof connector>
 

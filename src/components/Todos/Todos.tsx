@@ -2,7 +2,7 @@ import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import type { AppState } from 'app/store'
 import { Filter, Todo } from 'app/types'
-import { toggleTodo } from 'app/store/todos/actions'
+import { toggleTodo } from 'app/store/todos'
 
 type Props = ConnectedProps<typeof connector>
 
